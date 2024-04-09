@@ -5,10 +5,10 @@ import CartItem from './CartItem';
 const Cart = (props) => {
   return (
     <Card className={classes.cart}>
-      <h2>Your Shopping Cart</h2>
+      <h2>장바구니</h2>
       <ul>
         <CartItem
-          item={{ title: 'Test Item', quantity: 3, total: 18, price: 6 }}
+          item={{ title: '아이템1', quantity: 3, total: 18, price: 6 }}
         />
       </ul>
     </Card>

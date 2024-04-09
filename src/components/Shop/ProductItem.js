@@ -13,7 +13,7 @@ const ProductItem = (props) => {
         </header>
         <p>{description}</p>
         <div className={classes.actions}>
-          <button>Add to Cart</button>
+          <button>장바구니 추가</button>
         </div>
       </Card>
     </li>
