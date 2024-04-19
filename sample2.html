@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        fieldset {
+            margin: 0;
+            padding: 0;
+        }
+
+        .form_wrap2 {
+            width: 100%;
+
+            height: 120px;
+            background: #f8f8f8;
+            bottom: 0;
+            opacity: 1;
+            border-top: 1px solid #ccc;
+            z-index: 999999;
+
+            position: relative;
+            border-top: none;
+            background: #f3f3f3;
+
+        }
+
+        .form_wrap2 .inner {
+            width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            height: 120px;
+        }
+
+        .form_wrap2 .inner fieldset {
+            border: none;
+            margin: 0px;
+        }
+
+        .form_wrap2 .inner div {
+            width: 100%;
+        }
+
+        .form_wrap2 .inner div,
+        .form_wrap2 .inner button {
+            position: absolute;
+        }
+
+        .form_wrap2 .inner div.form_01 {
+            width: 1400px;
+        }
+
+        .form_wrap2 .inner div.form_02 {
+            left: 360px;
+        }
+
+        .form_wrap2 .inner div.form_03 {
+            left: 740px;
+        }
+
+        .form_wrap2 .inner button {
+            right: 0px;
+            height: 38px;
+            background: url(/images/btn_bg.png) no-repeat center;
+            width: 110px;
+            color: #ffffff;
+            font-size: 18px;
+        }
+
+        .form_wrap2 .inner h3 {
+            height: 40px;
+            background: #1d3d80;
+            width: 200px;
+            color: #fff;
+            text-align:
+                center;
+            font-size: 17px;
+            position: relative;
+            letter-spacing: -0.09em;
+            border-radius: 2px;
+            line-height: 45px;
+        }
+
+        .form_wrap2 .inner span {
+            position: absolute;
+            top: 0;
+            right: -135px;
+            color: #9e9e9e;
+            font-size: 12px;
+        }
+
+        .form_wrap2 .inner a {
+            position: absolute;
+            top: 3px;
+            right: -205px;
+            color: #9e9e9e;
+            font-size: 12px;
+        }
+
+        .form_wrap2 .inner .form_list dl {
+            overflow: hidden;
+            display: inline-block;
+            padding: 0px;
+            margin: 0px;
+            height: 200px;
+            line-height: 200px;
+            width: 100%;
+            padding-top: 20px;
+        }
+
+        .form_wrap2 .inner .form_list dl dt,
+        .form_wrap2 .inner .form_list dl dd {
+            float: left;
+        }
+
+        .form_wrap2 .inner .form_list dl dt {
+            margin-left: 15px;
+            margin-right: 6px;
+            font-size: 15px;
+            color: #5a472c;
+            font-weight: 500;
+            line-height: 32px;
+        }
+
+        .form_wrap2 .inner .form_list dl dd select {
+            border: 1px solid #ccc;
+            background: #fff;
+            width: 80px;
+            height: 36px;
+            padding-left: 5px;
+        }
+
+        .form_wrap2 .inner .form_list dl dd input {
+            border: 1px solid #ccc;
+            background: #fff;
+            width: 80px;
+            height: 32px;
+            padding-left: 5px;
+        }
+
+        .form_wrap2 .inner .btn_submit {
+            background: #788fa2;
+            border: none;
+            position: absolute;
+            width: 100px;
+            height: 35px;
+            color: #fff;
+            text-align: center;
+            font-size: 17px;
+            letter-spacing: -0.05em;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .form_wrap2 .inner .btn_submit:hover {
+            background: #788fa2;
+            transition: all 0.3s ease;
+        }
+
+        .form_wrap2 .inner .policy {
+            position: absolute;
+            margin-left: 1210px;
+            margin-top: 5px;
+        }
+
+        .form_wrap2 .inner .form_list dl dt {
+            height: 100%;
+            vertical-align: middle;
+            display: inline-block;
+            position: relative;
+        }
+
+        .form_wrap2 .inner .form_list dl dt .text {
+            position: relative;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .form_wrap2 .inner .form_list dl dt p input {
+            position: relative;
+        }
+
+        .form_wrap2 .inner .form_list dl dt p {
+            vertical-align: middle;
+            height: 100px;
+            position: relative;
+            top: -13px;
+        }
+
+        .form_wrap2 .top30 {
+            top: 30px;
+            left: -10px;
+        }
+
+        .form_wrap2 input,
+        .form_wrap2 select {
+            padding: 7px 10px;
+            margin: 2px 0;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            background-color: #f8f8f8;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        input[type=text]:focus {
+            border-color: #1d3d80;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form_wrap2">
+        <div class="inner">
+            <form name="fwritere1" method="post" enctype="multipart/form-data" style="margin:0px;">
+                <input type="hidden" name="board_code" value="">
+                <input type="hidden" name="unit_code" value="">
+                <input type="hidden" name="widget_code" value="">
+                <input type="hidden" name="board_name" value="">
+                <fieldset>
+                    <div class="form_01">
+                        <div class="form_list">
+                            <dl>
+                                <dt>
+                                    <h3>건강검진문의</h3>
+                                </dt>
+                                <dt>
+                                    <div class="text">이름(기업/단체명) </div>
+                                    <p><input type="text" name="wr_name" required=""
+                                            style="width:160px; font-size:15px;"></p>
+                                </dt>
+                                <dt>
+                                    <div class="text">휴대폰</div>
+                                    <p>
+                                        <select name="wr_7" class="form_wrap2_input">
+                                            <option value="010">010</option>
+                                            <option value="011">011</option>
+                                            <option value="016">016</option>
+                                            <option value="017">017</option>
+                                            <option value="018">018</option>
+                                            <option value="019">019</option>
+                                        </select>
+                                        -
+                                        <input type="text" name="wr_8" maxlength="4" required=""
+                                            class="form_wrap2_input">
+                                        -
+                                        <input type="text" name="wr_9" maxlength="4" required=""
+                                            sclass="form_wrap2_input">
+                                    </p>
+                                </dt>
+                                <dt style="width: 150px; text-align: center;">
+                                    <div class="text top30">
+                                        <button type="submit" class="btn_submit">작성</button>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div class="text top30">
+                                        <form name="privacy">
+
+                                            <div align="center"><br>
+                                                <input type="checkbox" name="option1" value="privacy" color="#fff"
+                                                    autocomplete="off">
+                                                <font size="3px"> &nbsp;개인정보수집 이용동의</font>
+                                                <a
+                                                    href="https://health.goosisoft.com/?preview_mode=1&amp;modal_menu=m20240320c948bbea060cc">
+                                                    <font size="3px">[약관보기]</font>
+                                                </a><br>
+
+                                                <br>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </dt>
+                            </dl>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+    <main>
+        <div doz_type="inside" class="inside">
+            <div doz_type="row" doz_grid="12" class="doz_row">
+                <div doz_type="grid" doz_grid="12" class="col-dz col-dz-12">
+                    <div doz_type="widget" id="w202403292fd5629e29dc5">
+                        <div class="_widget_data  ds_animated" data-widget-name="가로선" data-widget-type="hr"
+                            data-widget-anim="none" data-widget-anim-duration="0.7" data-widget-anim-delay="0"
+                            data-widget-parent-is-mobile="N" style="visibility: visible;">
+                            <div class="widget line type01 _hide" id="hr_w202403292fd5629e29dc5">
+                                <div class="line_box holder" style="width:100%; ">
+                                    <hr style="">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div doz_type="row" doz_grid="12" class="doz_row">
+                <div doz_type="grid" doz_grid="12" class="col-dz col-dz-12">
+                    <div doz_type="widget" id="w202403299778d0ebb879f">
+                        <div class="_widget_data _ds_animated_except" data-widget-name="여백" data-widget-type="padding"
+                            data-widget-parent-is-mobile="N">
+                            <div class="widget padding" data-height="-12" style="margin-top:px; margin-bottom:px;">
+                                <div id="padding_w202403299778d0ebb879f"
+                                    style="width:100%; min-height:1px; height:-12px; "></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div doz_type="inside" class="inside">
+            <div doz_type="row" doz_grid="12" class="doz_row">
+                <div doz_type="grid" doz_grid="2" doz_clear="Y" class="col-dz col-dz-2   col-xdz-clear">
+                    <div doz_type="widget" id="w202403291df45f7c0924a">
+                        <div class="_widget_data  ds_animated" data-widget-name="버튼" data-widget-type="button"
+                            data-widget-anim="none" data-widget-anim-duration="0.7" data-widget-anim-delay="0"
+                            data-widget-parent-is-mobile="N">
+                            <div class="widget button txt_c">
+                                <div class="button_wrap ">
+                                    <div class="inline-blocked "><a
+                                            class="cursor_default btn btn_3b5c2552720bd   btn-default _fade_link  "
+                                            style="margin: 0 10px 10px 0; border-radius:px">건강검진문의</a></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div doz_type="grid" doz_grid="7" doz_clear="Y" class="col-dz col-dz-7   col-xdz-clear">
+                    <div doz_type="widget" id="w20240329e79a02e4920e1">
+                        <div class="_widget_data  ds_animated" data-widget-name="입력폼" data-widget-type="form"
+                            data-widget-anim="none" data-widget-anim-duration="0.7" data-widget-anim-delay="0"
+                            data-widget-parent-is-mobile="N" style="visibility: visible;">
+                            <div class="form-widget widget  _form-widget">
+                                <!--deadline 붙으면 deadline-bar,deadline-opacity block상태-->
+
+
+
+                                <div class="deadline-opacity">
+                                    <form id="addFormw20240329e79a02e4920e1" method="POST" target="hidden_frame">
+                                        <input type="hidden" name="board_code" value="b202403297d514218ef9ad">
+                                        <input type="hidden" name="unit_code" value="u2024032065fa89617905e">
+                                        <input type="hidden" name="widget_code" value="w20240329e79a02e4920e1">
+                                        <input type="hidden" name="board_name" value="이름 없는 입력폼#1">
+                                        <div id="input_form_token_obj">
+                                            <input type="hidden" name="write_token" class="_tk_obj"
+                                                value="jr4XKEj0zDkvCUHRR91cmveBfZ/noAWzYbUdBy1JgKFLj3NUVbNn1aVUE+DT0nztbEwWCNMyil+5xvJMuZOwUcF4oBTCqdHt8Epxq1ZPveRvE8W3cQDBeuK0Xz90D1Mu">
+                                            <input type="hidden" name="write_token_key" class="_tk_key_obj"
+                                                value="8994">
+                                        </div>
+                                        <!--input type="hidden" name="results_permit" value="N"-->
+                                        <div class="form-group" id="input_9b2693abab52e"><label
+                                                for="input_txt_9b2693abab52e"
+                                                class="control-label">이름(기업/단체명)&nbsp;&nbsp;<i class="icon-required"
+                                                    aria-hidden="true"></i></label><input type="text"
+                                                class="form-control" name="input_9b2693abab52e" placeholder="" value=""
+                                                id="input_txt_9b2693abab52e" autocomplete="off"></div>
+                                        <div class="form-group" id="phonenumber_a5663281d5961"><label
+                                                for="input_num_a5663281d5961"
+                                                class="control-label">&nbsp;&nbsp;연락처&nbsp;&nbsp;<i
+                                                    class="icon-required" aria-hidden="true"></i></label>
+                                            <div class="phonenumber_wrap"><input type="tel" maxlength="4"
+                                                    class="_only_number  form-control inline-blocked _only_number_a5663281d5961"
+                                                    name="phonenumber1_a5663281d5961" placeholder="" value=""
+                                                    id="input_num_a5663281d5961" autocomplete="off"><span
+                                                    class="inline-blocked line">-</span><input type="tel" maxlength="4"
+                                                    class="_only_number  form-control inline-blocked _only_number_a5663281d5961"
+                                                    name="phonenumber2_a5663281d5961" placeholder="" value=""
+                                                    id="input_num_a5663281d5961" autocomplete="off"><span
+                                                    class="inline-blocked line">-</span><input type="tel" maxlength="4"
+                                                    class="_only_number  form-control inline-blocked _only_number_a5663281d5961 "
+                                                    name="phonenumber3_a5663281d5961" placeholder="" value=""
+                                                    id="input_num_a5663281d5961" autocomplete="off"></div>
+                                        </div>
+                                    </form>
+                                    <div class="form text-center">
+                                        <a href="javascript:;" class="btn btn-primary _input_form_submit"
+                                            onclick="SITE_FORM.confirmInputForm('w20240329e79a02e4920e1','N');">
+                                            작성</a>
+                                    </div>
+                                </div>
+                                <!-- 입력성공 alert 시작 -->
+                                <div tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false"
+                                    class="modal in modal_site_alert" style="display: none;"
+                                    id="input_form_complete_modal_w20240329e79a02e4920e1">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="layer_pop">
+                                                <div class="container-fluid">
+                                                    <p class="text-center"
+                                                        style="margin-bottom: 0;word-break: break-all;">
+                                                        정상적으로 접수되었습니다 </p>
+                                                </div>
+                                                <div class="btn-group-justified">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- // 입력성공 alert 종료 -->
+
+                                <!-- 압력실패시 alert -->
+                                <div tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false"
+                                    class="modal in modal_site_alert" style="display: none;"
+                                    id="input_form_error_modal_w20240329e79a02e4920e1">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="layer_pop">
+                                                <div class="container-fluid">
+                                                    <p class="text-center" style="margin-bottom: 0;">
+                                                    </p>
+                                                </div>
+                                                <div class="btn-group-justified">
+                                                    <a href="javascript:" class="btn right"
+                                                        onclick="SITE_FORM.hideModal();">확인</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div doz_type="grid" doz_grid="3" doz_clear="Y" class="col-dz col-dz-3   col-xdz-clear">
+                    <div doz_type="widget" id="w20240329a432b0eb01fed">
+                        <div class="_widget_data" data-widget-name="코드" data-widget-type="code" data-widget-anim="none"
+                            data-widget-anim-duration="0.7" data-widget-anim-delay="0" data-widget-parent-is-mobile="N"
+                            style="visibility: visible;">
+                            <form name="privacy">
+
+                                <div align="center"><br>
+
+
+                                    <input type="checkbox" name="option1" value="privacy" color="#fff"
+                                        autocomplete="off">
+                                    <font size="3px"> &nbsp;개인정보수집 이용동의</font><a
+                                        href="https://health.goosisoft.com/?preview_mode=1&amp;modal_menu=m20240320c948bbea060cc">
+                                        <font size="3px">[약관보기]</font>
+                                    </a><br>
+
+                                    <br>
+
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div doz_type="inside" class="inside">
+            <div doz_type="row" doz_grid="12" class="doz_row">
+                <div doz_type="grid" doz_grid="12" class="col-dz col-dz-12">
+                    <div doz_type="widget" id="w202403292cc0ee548739a">
+                        <div class="_widget_data" data-widget-name="코드" data-widget-type="code" data-widget-anim="none"
+                            data-widget-anim-duration="0.7" data-widget-anim-delay="0" data-widget-parent-is-mobile="N"
+                            style="visibility: visible;"></div>
+                    </div>
+                </div>
+            </div>
+            <div doz_type="row" doz_grid="12" class="doz_row">
+                <div doz_type="grid" doz_grid="12" class="col-dz col-dz-12">
+                    <div doz_type="widget" id="w202404177db5b2fc981ab">
+                        <div class="_widget_data" data-widget-name="코드" data-widget-type="code" data-widget-anim="none"
+                            data-widget-anim-duration="0.7" data-widget-anim-delay="0" data-widget-parent-is-mobile="N"
+                            style="visibility: visible;">
+
+
+                            <a href="tel:010-2400-6246" class="fltBanner1" target="_blank">
+                                <img src="https://cdn.imweb.me/upload/S20240320c0d593b18ef43/dd36f0f20521f.png"
+                                    width="235px" height="110px">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div doz_type="row" doz_grid="12" class="doz_row">
+                <div doz_type="grid" doz_grid="12" class="col-dz col-dz-12">
+                    <div doz_type="widget" id="w202403294535942afd805">
+                        <div class="_widget_data _ds_animated_except" data-widget-name="여백" data-widget-type="padding"
+                            data-widget-parent-is-mobile="N">
+                            <div class="widget padding" data-height="-35" style="margin-top:px; margin-bottom:px;">
+                                <div id="padding_w202403294535942afd805"
+                                    style="width:100%; min-height:1px; height:-35px; "></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
