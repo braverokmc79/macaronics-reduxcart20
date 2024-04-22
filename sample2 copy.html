@@ -6,35 +6,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <style>
-        .blue.myclass {
-            display: block;
-            color: blue;
-        }
-    </style>
+<style>
+.blue.myclass{
+ display: block;
+ color: blue;;
+}
+
+</style>    
 </head>
 
 <body>
 
+
+
     <div class="curriculum_right">
+
         <!-- MVP 30-project-202404  -->
         <button type="button" data-type="2" data-acadsn="3002" data-coursn="4003" data-classsn="5003"
-            data-lessn="805420" data-beginde="24.04.21" data-endtime="16:50" data-begintime="12:40"
+            data-lessn="805420" data-beginde="24.04.21" data-endtime="16:50" data-begintime="12:10"
             class="btn-check ">예습</button>
         <span class="timer"></span>
         <a href="javascript:void(0)" class="btn-enterlesson disabled"
             onclick="alert('You can enter 5 minutes before the start time.')">강의 입장</a>
         <p class="questions"><button type="button" class="btn-moreview" title="질문하기">질문하기</button><span><a
                     href="/page/b2b/myPage/board/questions">질문하기</a></span>
-        </p>
-    </div>
+                </p>
 
-    <script>
+                </div>
+
+        <div class="curriculum_right">
+
+        <!-- MVP 30-project-202404  -->
+        <button type="button" data-type="2" data-acadsn="3002" data-coursn="4003" data-classsn="5004"
+            data-lessn="805420" data-beginde="24.04.21" data-endtime="16:50" data-begintime="12:20"
+            class="btn-check">예습</button>
+            <span class="timer"></span>
+        <a href="javascript:void(0)" class="btn-enterlesson disabled"
+            onclick="alert('You can enter 5 minutes before the start time.')">강의 입장</a>
+        <p class="questions"><button type="button" class="btn-moreview" title="질문하기">질문하기</button><span><a
+                    href="/page/b2b/myPage/board/questions">질문하기</a></span>
+                </p>
+
+        </div>
+
+
+        
+
+
+<script>
 $(document).ready(function() {
     // 현재 시간을 가져오는 함수
     function getCurrentTime() {
         const now = new Date();
-        return now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds(); // 초 단위로 변환
+        return now.getHours() * 60 + now.getMinutes(); // 분 단위로 변환
     }
 
     // 현재 날짜를 가져오는 함수
@@ -46,10 +70,10 @@ $(document).ready(function() {
         return `${year}-${month}-${day}`;
     }
 
-    // 강의 시작 시간을 가져오는 함수 (파라미터로 전달된 강의의 시작 시간을 초 단위로 반환)
+    // 강의 시작 시간을 가져오는 함수 (파라미터로 전달된 강의의 시작 시간을 분 단위로 반환)
     function getLessonStartTime(beginTime) {
         const timeParts = beginTime.split(':');
-        return parseInt(timeParts[0]) * 3600 + parseInt(timeParts[1]) * 60;
+        return parseInt(timeParts[0]) * 60 + parseInt(timeParts[1]);
     }
 
     // 시간을 표시할 때 2자리 수로 표시하는 함수
@@ -59,12 +83,13 @@ $(document).ready(function() {
 
     // 강의 시작 10분 전에만 타이머를 표시하고 업데이트하는 함수
     function showTimerIfNecessary(button, timer) {
-        const lessonStartDate = '20' + button.data('beginde').split('.').join('-'); // "24.04.21" -> "2024-04-21"
+        const lessonStartDate = button.data('beginde');
         const lessonStartTime = getLessonStartTime(button.data('begintime'));
         const currentDate = getCurrentDate();
-        const tenMinutesBefore = lessonStartTime - 600; // 10분은 600초입니다.
+        const currentTime = getCurrentTime();
+        const tenMinutesBefore = lessonStartTime - 10;
 
-        if (lessonStartDate === currentDate && getCurrentTime() >= tenMinutesBefore && getCurrentTime() < lessonStartTime) {
+        if (lessonStartDate === currentDate && currentTime >= tenMinutesBefore && currentTime < lessonStartTime) {
             timer.addClass('blue myclass');
             // 타이머를 표시하고 1초마다 업데이트
             const timerInterval = setInterval(function() {
@@ -95,8 +120,9 @@ $(document).ready(function() {
      console.log("타임");
 });
 
-    </script>
 
-</body>
+</script>
+
+       </body>
 
 </html>

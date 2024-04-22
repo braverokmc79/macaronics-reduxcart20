@@ -2,7 +2,6 @@ import { useSelector } from 'react-redux';
 import Card from '../UI/Card';
 import classes from './Cart.module.css';
 import CartItem from './CartItem';
-import { convertTypeAcquisitionFromJson } from 'typescript';
 
 const Cart = (props) => {
   const cartItems=useSelector(state=>state.cart.items);
@@ -17,12 +16,15 @@ const Cart = (props) => {
 
           <CartItem
             key={item.id}
-            item={{ 
+            item={{                 
                   id: item.id,
                   title: item.name, 
                   quantity:item.quantity, 
                   total: item.totalPrice, 
-                  price: item.price}}
+                  price: item.price,
+                  img:item.img && item.img
+                
+                }}
           />
 
         ))}

@@ -2,9 +2,12 @@ import { useDispatch } from 'react-redux';
 import classes from './CartItem.module.css';
 import { cartActions } from '../../store/cart-slice';
 
+
+
+
 const CartItem = (props) => {
   const dispatch=useDispatch();
-  const {id, title, quantity, total, price } = props.item;
+  const {id, title, quantity, total, price, img } = props.item;
 
    const removeItemHandler=()=>{
     dispatch(cartActions.removeItemFromCart(id));
@@ -19,11 +22,12 @@ const CartItem = (props) => {
 
   return (
     <li className={classes.item}>
-      <header>
+      <header>        
         <h3>{title}</h3>
+      
         <div className={classes.price}>
-          ${total.toFixed(2)}{' '}
-          <span className={classes.itemprice}>(${price.toFixed(2)}/item)</span>
+          {total&&  formatterKRW.format(Number(total)) }
+          <span className={classes.itemprice}>({formatterKRW.format(price)})</span>
         </div>
       </header>
       <div className={classes.details}>
@@ -35,8 +39,19 @@ const CartItem = (props) => {
           <button onClick={addItemHandler}>+</button>
         </div>
       </div>
+      <div>
+          <img src={img&&img} style={{maxWidth:"240px",maxHeight:"220px"}}/>
+        </div>
     </li>
   );
 };
+
+
+export const  formatterKRW = new Intl.NumberFormat('ko-KR', {
+  style: 'currency',
+  currency: 'KRW',
+});
+
+
 
 export default CartItem;

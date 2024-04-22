@@ -1,76 +1,67 @@
-import { Fragment, useEffect } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Cart from './components/Cart/Cart'; 
 import Layout from './components/Layout/Layout'; 
 import Products from './components/Shop/Products'; 
-import { uiActions } from './store/ui-slice';
 import Notification from './components/UI/Notification';
+import { fetchCartData, sendCartData } from './store/cart-action';
+import { cartActions } from './store/cart-slice';
+import { productList } from './store/product-actions';
+import Footer from './components/Layout/Footer';
+import ScrollTop from './components/UI/ScrollTop';
 
-
-let isInitial =true;
-
+let isInitial = true;
 
 function App() {  
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
   const showCart = useSelector(state => state.ui.cartIsVisible); // 장바구니 표시 여부
   const cart = useSelector(state => state.cart); // 장바구니 데이터
-  const notification=useSelector(state => state.ui.notification);
+  const notification = useSelector(state => state.ui.notification);
 
-  // useEffect 훅을 사용하여 cart 데이터가 변경될 때마다 실행
+  const [isProductListLoaded, setIsProductListLoaded] = useState(false);
+
   useEffect(() => {
-    const sendCardData = async () => {
-          dispatch(uiActions.showNotification({
-            status:'pending',
-            title:'Sending...',
-            message:'장바구니 데이터를 전송 중입니다!'
-          }));
-
-          const response = await fetch('https://react-http-6b4a6.firebaseio.com/cart.json', {
-            method: 'PUT',
-            body: JSON.stringify(cart),
-          })
-
-          if (!response || !response.ok) {;
-            throw new Error('장바구니 데이터를 전송하지 못했습니다.');
-          }
-
-          dispatch(uiActions.showNotification({
-            status:'success',
-            title:'Success!',
-            message:'장바구니 데이터가 성공적으로 전송되었습니다!'
-          }));
-
-    };
+    //1.상품 목록 가져오기
+    if (!isProductListLoaded) {
+      setIsProductListLoaded(true);
+      
+      dispatch(productList(isProductListLoaded));  
+      
+      //2.장바구니 목록 가져오기
+     // dispatch(fetchCartData(isProductListLoaded));    
+    }
+  }, []);
 
 
-    if(isInitial){
-      isInitial=false;
+
+  //2.장바구니 넣기
+  useEffect(() => {   
+    if (isInitial) {
+      isInitial = false;
       return;
     }
 
-    sendCardData().catch((error) => {
-      //console.error(" 에러 :", error);
-       dispatch(uiActions.showNotification({
-          status:'error',
-          title:'Error!',
-          message:'장바구니 데이터 전송에 실패했습니다!'
-        }));
-     });
+    // 장바구니가 변경될 때에만 호출된다.
+    if (cart.changed) {
+      //dispatch(sendCartData(cart));
+      dispatch(cartActions.addItemToCart(cart));
 
+      //dispatch(cartActions.addItemToCart(cart));
+    }
   }, [cart, dispatch]); // useEffect 의존성 배열에 cart와 dispatch 추가
 
   return (
     <Fragment>
-       {notification &&  <Notification   status={notification.status}  title={notification.title} message={notification.message}   />  }
+      {notification && <Notification status={notification.status} title={notification.title} message={notification.message} />}       
+      <Layout> {/* 레이아웃 컴포넌트 */}
+        {/* 장바구니 표시 여부에 따라 Cart 컴포넌트 조건부 렌더링 */}
+        {showCart && <Cart />} 
+        {/* 제품 목록 컴포넌트 */}
+        {isProductListLoaded  && <Products />}
+      </Layout>
 
-       
-        <Layout> {/* 레이아웃 컴포넌트 */}
-          {/* 장바구니 표시 여부에 따라 Cart 컴포넌트 조건부 렌더링 */}
-          {showCart && <Cart />} 
-          
-          {/* 제품 목록 컴포넌트 */}
-          <Products />
-        </Layout>
+      <Footer/>
+      <ScrollTop />
     </Fragment>
   );
 }
